@@ -3,9 +3,7 @@
 [![Version](https://img.shields.io/visual-studio-marketplace/v/hella-lang.hella-lang)](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/hella-lang.hella-lang)](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang)
 
-Complete VS Code extension for the **Hella** programming language —
-a faithful port of
-[`hella.nvim`](https://github.com/hella-lang/hella.nvim).
+Complete VS Code extension for the **Hella** programming language.
 
 📦 [Install from the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang)
 

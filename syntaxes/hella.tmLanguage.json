@@ -1,0 +1,251 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Hella",
+  "scopeName": "source.hella",
+  "fileTypes": ["hll", "hlt", "holt"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#triple-string" },
+    { "include": "#raw-string" },
+    { "include": "#normal-string" },
+    { "include": "#character" },
+    { "include": "#numbers" },
+    { "include": "#attributes" },
+    { "include": "#function-call" },
+    { "include": "#keywords" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.hella",
+          "match": "//.*$",
+          "captures": {
+            "0": {
+              "patterns": [
+                {
+                  "name": "keyword.other.todo.hella",
+                  "match": "\\b(?i:(TODO|FIXME|XXX|HACK|NOTE))\\b"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "comment.block.hella",
+          "begin": "/\\*",
+          "end": "\\*/",
+          "captures": {
+            "0": {
+              "patterns": [
+                {
+                  "name": "keyword.other.todo.hella",
+                  "match": "\\b(?i:(TODO|FIXME|XXX|HACK|NOTE))\\b"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "escapes": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.hella",
+          "match": "\\\\(?:[nrtbf0\\\\\"']|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4})"
+        },
+        {
+          "name": "constant.character.escape.brace.hella",
+          "match": "\\{\\{|\\}\\}"
+        }
+      ]
+    },
+    "interpolation": {
+      "name": "meta.interpolation.hella",
+      "begin": "\\{",
+      "end": "\\}",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.interpolation.begin.hella" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.interpolation.end.hella" }
+      },
+      "patterns": [
+        { "include": "#escapes" },
+        { "include": "#comments" },
+        { "include": "#triple-string" },
+        { "include": "#raw-string" },
+        { "include": "#normal-string" },
+        { "include": "#character" },
+        { "include": "#numbers" },
+        { "include": "#attributes" },
+        { "include": "#function-call" },
+        { "include": "#keywords" },
+        { "include": "#operators" }
+      ]
+    },
+    "triple-string": {
+      "name": "string.quoted.triple.hella",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.hella" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.hella" }
+      },
+      "patterns": [
+        { "include": "#escapes" },
+        { "include": "#interpolation" }
+      ]
+    },
+    "raw-string": {
+      "name": "string.quoted.raw.hella",
+      "begin": "r\"",
+      "end": "\"",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.hella" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.hella" }
+      }
+    },
+    "normal-string": {
+      "name": "string.quoted.double.hella",
+      "begin": "\"",
+      "end": "\"",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.hella" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.hella" }
+      },
+      "patterns": [
+        { "include": "#escapes" },
+        { "include": "#interpolation" }
+      ]
+    },
+    "character": {
+      "name": "string.quoted.single.hella",
+      "begin": "'",
+      "end": "'",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.hella" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.hella" }
+      },
+      "patterns": [
+        {
+          "name": "constant.character.escape.hella",
+          "match": "\\\\(?:[nrtbf0\\\\\"']|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4})"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.hella",
+          "match": "\\b[0-9][0-9_]*\\.[0-9_]*(?:[eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.float.hella",
+          "match": "(?<![0-9A-Za-z_.])\\.[0-9][0-9_]*(?:[eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.float.hella",
+          "match": "\\b[0-9][0-9_]*[eE][+-]?[0-9_]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.hex.hella",
+          "match": "\\b0[xX][0-9a-fA-F_]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.bin.hella",
+          "match": "\\b0[bB][01_]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.hella",
+          "match": "\\b[0-9][0-9_]*(?![.eExXbB])\\b"
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "meta.attribute.hella",
+          "match": "(@)([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": { "name": "punctuation.definition.annotation.hella" },
+            "2": { "name": "entity.name.function.attribute.hella" }
+          }
+        }
+      ]
+    },
+    "function-call": {
+      "patterns": [
+        {
+          "name": "entity.name.function.hella",
+          "match": "(?<!@)\\b([A-Za-z_][A-Za-z0-9_]*)(?=\\s*\\()"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "storage.type.hella",
+          "match": "\\b(any|bool|char|double|float|int|string|void)\\b"
+        },
+        {
+          "name": "keyword.control.conditional.hella",
+          "match": "\\b(if|else|match)\\b"
+        },
+        {
+          "name": "keyword.control.repeat.hella",
+          "match": "\\b(while|loop|for|in)\\b"
+        },
+        {
+          "name": "keyword.control.hella",
+          "match": "\\b(break|continue|return|defer|assert|debug_assert)\\b"
+        },
+        {
+          "name": "keyword.declaration.hella",
+          "match": "\\b(class|struct|trait|enum|function|typedef|distinct|const|import|extern|init|operator|convert|extend|has|do|end|get|set|initialize)\\b"
+        },
+        {
+          "name": "storage.modifier.hella",
+          "match": "\\b(public|private|static|sealed|override|open|explicit|ref|out|implements|extends|where)\\b"
+        },
+        {
+          "name": "keyword.operator.word.hella",
+          "match": "\\b(and|or|not|is)\\b"
+        },
+        {
+          "name": "variable.language.hella",
+          "match": "\\b(this|super|Self)\\b"
+        },
+        {
+          "name": "keyword.other.hella",
+          "match": "\\b(from|to)\\b"
+        },
+        {
+          "name": "constant.language.boolean.hella",
+          "match": "\\b(true|false)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.hella",
+          "match": "<<=|>>=|\\.\\.=|\\?\\.|\\?\\?|::|->|=>|<<|>>|<=|>=|\\+=|-=|\\*=|/=|%=|&=|\\|=|\\^=|==|\\+\\+|--|\\.\\."
+        },
+        {
+          "name": "keyword.operator.hella",
+          "match": "[+\\-*/%<>=&|^~?.@:,.]"
+        }
+      ]
+    }
+  }
+}

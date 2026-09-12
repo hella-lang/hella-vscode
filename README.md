@@ -1,8 +1,13 @@
 # Hella for VS Code
 
+[![Version](https://img.shields.io/visual-studio-marketplace/v/hella-lang.hella-lang)](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/hella-lang.hella-lang)](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang)
+
 Complete VS Code extension for the **Hella** programming language —
 a faithful port of
 [`hella.nvim`](https://github.com/hella-lang/hella.nvim).
+
+📦 [Install from the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang)
 
 Provides:
 
@@ -21,6 +26,18 @@ Provides:
   `has` inserts the matching `end` (endwise-style, no dependencies).
 
 File extensions: `.hll` (canonical), `.hlt` and `.holt` (legacy aliases).
+
+## Installation
+
+From the [Marketplace listing](https://marketplace.visualstudio.com/items?itemName=hella-lang.hella-lang):
+
+- In VS Code: open the Extensions view (`Ctrl`/`Cmd`+`Shift`+`X`),
+  search for **Hella**, and click **Install**.
+- Or from the command line:
+
+```bash
+code --install-extension hella-lang.hella-lang
+```
 
 ## Requirements
 

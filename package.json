@@ -1,146 +1,156 @@
 {
-  "name": "hella-lang",
-  "displayName": "Hella",
-  "description": "Hella language support: highlighting, LSP, formatting, endwise",
-  "version": "0.1.0",
-  "publisher": "hella-lang",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.137.0"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "activationEvents": [
-    "onLanguage:hella"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "languages": [
-      {
-        "id": "hella",
-        "aliases": [
-          "Hella",
-          "hella"
-        ],
-        "extensions": [
-          ".hll",
-          ".hlt",
-          ".holt"
-        ],
-        "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "hella",
-        "scopeName": "source.hella",
-        "path": "./syntaxes/hella.tmLanguage.json"
-      }
-    ],
-    "commands": [
-      {
-        "command": "hella.format",
-        "title": "Hella: Format Document (hella fmt)"
-      },
-      {
-        "command": "hella.formatCheck",
-        "title": "Hella: Check Formatting (hella fmt --check)"
-      },
-      {
-        "command": "hella.restartServer",
-        "title": "Hella: Restart Language Server"
-      }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "hella.format",
-          "when": "editorLangId == hella"
-        },
-        {
-          "command": "hella.formatCheck",
-          "when": "editorLangId == hella"
-        },
-        {
-          "command": "hella.restartServer",
-          "when": "editorLangId == hella"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "hella.format",
-          "when": "editorLangId == hella",
-          "group": "1_modification"
-        }
-      ]
+    "name": "hella",
+    "displayName": "Hella",
+    "description": "Hella language support: highlighting, LSP, formatting, endwise",
+    "icon": "icon.png",
+    "repository": {
+        "url": "https://github.com/hella-lang/hella-vscode"
     },
-    "configuration": {
-      "title": "Hella",
-      "properties": {
-        "hella.server.path": {
-          "type": "string",
-          "default": "hella",
-          "description": "Path to the Hella binary used to start the language server."
+    "version": "0.1.0",
+    "publisher": "hella-lang",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.137.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:hella"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "hella",
+                "aliases": [
+                    "Hella",
+                    "hella"
+                ],
+                "extensions": [
+                    ".hll",
+                    ".hlt",
+                    ".holt"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "hella",
+                "scopeName": "source.hella",
+                "path": "./syntaxes/hella.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "hella.format",
+                "title": "Hella: Format Document (hella fmt)"
+            },
+            {
+                "command": "hella.formatCheck",
+                "title": "Hella: Check Formatting (hella fmt --check)"
+            },
+            {
+                "command": "hella.restartServer",
+                "title": "Hella: Restart Language Server"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "hella.format",
+                    "when": "editorLangId == hella"
+                },
+                {
+                    "command": "hella.formatCheck",
+                    "when": "editorLangId == hella"
+                },
+                {
+                    "command": "hella.restartServer",
+                    "when": "editorLangId == hella"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "hella.format",
+                    "when": "editorLangId == hella",
+                    "group": "1_modification"
+                }
+            ]
         },
-        "hella.server.args": {
-          "type": "array",
-          "items": { "type": "string" },
-          "default": ["lsp"],
-          "description": "Arguments for the Hella language server (must speak LSP over stdio)."
-        },
-        "hella.format.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable formatting via the canonical `hella fmt` CLI."
-        },
-        "hella.format.command": {
-          "type": "array",
-          "items": { "type": "string" },
-          "default": [],
-          "description": "Override the formatter command. Empty derives it from the server command by swapping `lsp` for `fmt` (same binary)."
-        },
-        "hella.format.onSave": {
-          "type": "boolean",
-          "default": true,
-          "description": "Format Hella files on save (BufWritePre equivalent)."
-        },
-        "hella.endwise.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Auto-close `do`/`has` blocks with `end` on Enter."
-        },
-        "hella.notifications.enabled": {
-          "type": "boolean",
-          "default": false,
-          "description": "Show info notifications (server start, already formatted)."
+        "configuration": {
+            "title": "Hella",
+            "properties": {
+                "hella.server.path": {
+                    "type": "string",
+                    "default": "hella",
+                    "description": "Path to the Hella binary used to start the language server."
+                },
+                "hella.server.args": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "lsp"
+                    ],
+                    "description": "Arguments for the Hella language server (must speak LSP over stdio)."
+                },
+                "hella.format.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable formatting via the canonical `hella fmt` CLI."
+                },
+                "hella.format.command": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [],
+                    "description": "Override the formatter command. Empty derives it from the server command by swapping `lsp` for `fmt` (same binary)."
+                },
+                "hella.format.onSave": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Format Hella files on save (BufWritePre equivalent)."
+                },
+                "hella.endwise.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Auto-close `do`/`has` blocks with `end` on Enter."
+                },
+                "hella.notifications.enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show info notifications (server start, already formatted)."
+                }
+            }
         }
-      }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.10",
+        "@types/node": "24.x",
+        "@types/vscode": "^1.137.0",
+        "@vscode/test-cli": "^0.0.15",
+        "@vscode/test-electron": "^3.0.0",
+        "eslint": "^10.5.0",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.61.1"
+    },
+    "overrides": {
+        "diff": "^8.0.4",
+        "serialize-javascript": "^7.0.6"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^10.1.1"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/mocha": "^10.0.10",
-    "@types/node": "24.x",
-    "@types/vscode": "^1.137.0",
-    "@vscode/test-cli": "^0.0.15",
-    "@vscode/test-electron": "^3.0.0",
-    "eslint": "^10.5.0",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.61.1"
-  },
-  "overrides": {
-    "diff": "^8.0.4",
-    "serialize-javascript": "^7.0.6"
-  },
-  "dependencies": {
-    "vscode-languageclient": "^10.1.1"
-  }
 }

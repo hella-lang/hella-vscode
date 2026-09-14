@@ -195,7 +195,7 @@
       "patterns": [
         {
           "name": "storage.type.hella",
-          "match": "\\b(any|bool|char|double|float|int|string|void)\\b"
+          "match": "\\b(any|bool|char|double|float|int|string|void|arr|vec|own)\\b"
         },
         {
           "name": "keyword.control.conditional.hella",
@@ -207,11 +207,11 @@
         },
         {
           "name": "keyword.control.hella",
-          "match": "\\b(break|continue|return|defer|assert|debug_assert)\\b"
+          "match": "\\b(break|continue|return|defer|assert|debug_assert|delete)\\b"
         },
         {
           "name": "keyword.declaration.hella",
-          "match": "\\b(class|struct|trait|enum|function|typedef|distinct|const|import|extern|init|operator|convert|extend|has|do|end|get|set|initialize)\\b"
+          "match": "\\b(class|struct|trait|enum|function|typedef|distinct|const|import|extern|init|operator|convert|extend|has|do|end|get|set|initialize|new)\\b"
         },
         {
           "name": "storage.modifier.hella",
@@ -230,8 +230,8 @@
           "match": "\\b(from|to)\\b"
         },
         {
-          "name": "constant.language.boolean.hella",
-          "match": "\\b(true|false)\\b"
+          "name": "constant.language.hella",
+          "match": "\\b(true|false|null)\\b"
         }
       ]
     },

@@ -1,6 +1,6 @@
 {
     "name": "hella",
-    "displayName": "Hella",
+    "displayName": "Hella Lang",
     "description": "Hella language support: highlighting, LSP, formatting, endwise",
     "icon": "icon.png",
     "repository": {

@@ -6,4 +6,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
+- Highlight `async`, `await`, `spawn`, `scope`, `yield` keywords and the `task` type form

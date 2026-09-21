@@ -7,3 +7,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Highlight `async`, `await`, `spawn`, `scope`, `yield` keywords and the `task` type form
+- Highlight sized integer types (`i8`…`i128`, `u8`…`u128`, `uint`); prefix `&`/`*` address-of/dereference already match as operators

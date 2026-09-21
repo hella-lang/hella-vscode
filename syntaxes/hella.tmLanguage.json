@@ -195,7 +195,7 @@
       "patterns": [
         {
           "name": "storage.type.hella",
-          "match": "\\b(any|bool|char|double|float|int|string|void|arr|vec|own|task)\\b"
+          "match": "\\b(any|bool|char|double|float|int|string|void|arr|vec|own|task|i8|i16|i32|i64|i128|u8|u16|u32|u64|u128|uint)\\b"
         },
         {
           "name": "keyword.control.conditional.hella",
